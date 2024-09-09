@@ -36,6 +36,9 @@ android {
     kotlinOptions {
         jvmTarget = "1.8"
     }
+    buildFeatures {
+        viewBinding = true
+    }
 }
 
 //noinspection UseTomlInstead
@@ -108,6 +111,9 @@ dependencies {
 
     // Paging 3
     implementation("androidx.paging:paging-runtime-ktx:3.3.2")
+
+    // Build-in splashscreen
+    implementation("androidx.core:core-splashscreen:1.0.0")
 }
 
 kapt {
