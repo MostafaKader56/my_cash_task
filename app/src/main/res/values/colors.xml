@@ -1,5 +1,42 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="black">#FF000000</color>
-    <color name="white">#FFFFFFFF</color>
+    <color name="white">@android:color/white</color>
+    <color name="black">@android:color/black</color>
+    <color name="transparent">@android:color/transparent</color>
+
+    <color name="my_light_primary">#6200EE</color>
+    <color name="my_light_primary_variant">#3700B3</color>
+    <color name="my_light_on_primary">#FFFFFF</color>
+    <color name="my_light_secondary">#03DAC6</color>
+    <color name="my_light_secondary_variant">#018786</color>
+    <color name="my_light_on_secondary">#000000</color>
+    <color name="my_light_background">#FFFFFF</color>
+    <color name="my_light_on_background">#000000</color>
+    <color name="my_light_surface">#FFFFFF</color>
+    <color name="my_light_on_surface">#000000</color>
+    <color name="my_light_error">#B00020</color>
+    <color name="my_light_on_error">#FFFFFF</color>
+
+    <color name="splash_screen_background">#FFFFFF</color>
+    <color name="splash_screen_icon_background">#000000</color>
+
+
+    <color name="teal_200">#FF03DAC5</color>
+    <color name="red_0">#FB5658</color>
+    <color name="grey_0">#8E989A</color>
+    <color name="grey_2">#BDBEC9</color>
+    <color name="green_black">#02232C</color>
+
+    <color name="auth_main_text_color">#FEFFD5</color>
+    <color name="colorLoadingBackground">#59114C64</color>
+
+    <color name="status_bar_color">#003441</color>
+    <color name="yalow">#FEFFD5</color>
+    <color name="accent_blue">#84D3D5</color>
+
+    <color name="side_drawer_content_color">#FEFFD5</color>
+    <color name="white_with_opacity">#CCFFFFFF</color> <!-- %80 white -->
+
+    <color name="linear_start_color">#003441</color>
+    <color name="linear_end_color">#456F79</color>
 </resources>

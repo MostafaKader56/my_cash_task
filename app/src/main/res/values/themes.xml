@@ -1,9 +1,29 @@
 <resources xmlns:tools="http://schemas.android.com/tools">
-    <!-- Base application theme. -->
     <style name="Base.Theme.MyCashTask" parent="Theme.Material3.DayNight.NoActionBar">
-        <!-- Customize your light theme here. -->
-        <!-- <item name="colorPrimary">@color/my_light_primary</item> -->
+        <item name="colorPrimary">@color/my_light_primary</item>
+        <item name="colorPrimaryVariant">@color/my_light_primary_variant</item>
+        <item name="colorOnPrimary">@color/my_light_on_primary</item>
+        <item name="colorSecondary">@color/my_light_secondary</item>
+        <item name="colorSecondaryVariant">@color/my_light_secondary_variant</item>
+        <item name="colorOnSecondary">@color/my_light_on_secondary</item>
+        <item name="colorOnBackground">@color/my_light_on_background</item>
+        <item name="colorSurface">@color/my_light_surface</item>
+        <item name="colorOnSurface">@color/my_light_on_surface</item>
+        <item name="colorError">@color/my_light_error</item>
+        <item name="colorOnError">@color/my_light_on_error</item>
+
+        <item name="android:windowSplashScreenBackground">@color/splash_screen_background</item>
+        <item name="android:windowSplashScreenAnimatedIcon">@mipmap/ic_launcher</item>
+        <item name="android:windowSplashScreenAnimationDuration">1000</item>
+        <item name="android:windowSplashScreenIconBackgroundColor">@color/splash_screen_icon_background</item>
+
     </style>
 
     <style name="Theme.MyCashTask" parent="Base.Theme.MyCashTask" />
+
+    <style name="CustomProgressBarTheme">
+        <item name="android:windowTranslucentStatus" tools:ignore="NewApi">true</item>
+        <item name="android:windowLightStatusBar" tools:targetApi="m">false</item>
+        <item name="android:windowBackground">@color/transparent</item>
+    </style>
 </resources>
