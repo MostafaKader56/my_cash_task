@@ -7,9 +7,7 @@ import androidx.core.splashscreen.SplashScreen.Companion.installSplashScreen
 import com.bb4first.mycashtask.ui.auth.AuthActivity
 import com.bb4first.mycashtask.ui.home.HomeActivity
 import com.bb4first.mycashtask.utlis.SharedPreferencesModule
-import dagger.hilt.android.AndroidEntryPoint
 
-@AndroidEntryPoint
 class RoutingActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         val splashScreen = installSplashScreen()
