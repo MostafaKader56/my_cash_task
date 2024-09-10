@@ -15,7 +15,7 @@
         app:fontWeight="200"
          />
     <font
-        app:font="@font/tt_commons_extra_light_ltalic"
+        app:font="@font/tt_commons_extra_light_italic"
         app:fontStyle="italic"
         app:fontWeight="200"
          />
@@ -25,10 +25,9 @@
         app:fontWeight="300"
          />
     <font
-        app:font="@font/tt_commons_font_family"
+        app:font="@font/tt_commons_regular"
         app:fontStyle="normal"
-        app:fontWeight="400"
-         />
+        app:fontWeight="400" />
     <font
         app:font="@font/tt_commons_italic"
         app:fontStyle="italic"

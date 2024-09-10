@@ -49,8 +49,6 @@
     <dimen name="_260dp">260dp</dimen>
     <dimen name="_285dp">285dp</dimen>
 
-    <dimen name="_minus6dp">-6dp</dimen>
-    <dimen name="_minus8dp">-8dp</dimen>
-    <dimen name="_minus10dp">-10dp</dimen>
-    <dimen name="_minus42dp">-42dp</dimen>
+
+    <dimen name="_24sp">24sp</dimen>
 </resources>

@@ -24,6 +24,9 @@
             @color/splash_screen_icon_background
         </item>
 
+        <item name="android:fontFamily">@font/app_font_family</item>
+
+        <item name="android:textColor">@color/black_text_color</item>
     </style>
 
     <style name="Theme.MyCashTask" parent="Base.Theme.MyCashTask" />

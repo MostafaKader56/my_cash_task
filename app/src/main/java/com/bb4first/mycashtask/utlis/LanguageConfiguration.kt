@@ -1,9 +1,9 @@
 package com.bb4first.mycashtask.utlis
 
 import android.content.Context
-import java.util.Locale
-import com.bb4first.mycashtask.utlis.SharedPreferencesModule.PREF_APP_LANGUAGE
 import com.bb4first.mycashtask.enums.AppLanguage
+import com.bb4first.mycashtask.utlis.SharedPreferencesModule.PREF_APP_LANGUAGE
+import java.util.Locale
 
 
 object LanguageConfiguration {

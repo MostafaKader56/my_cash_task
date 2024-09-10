@@ -1,10 +1,13 @@
 package com.bb4first.mycashtask.ui.auth
 
 import androidx.fragment.app.viewModels
+import androidx.navigation.Navigation
+import com.bb4first.mycashtask.R
 import com.bb4first.mycashtask.base.BaseFragment
 import com.bb4first.mycashtask.base.StartInflation
 import com.bb4first.mycashtask.databinding.FragmentLoginBinding
 import com.bb4first.mycashtask.enums.ErrorViewType
+import com.bb4first.mycashtask.utlis.Utils
 import com.bb4first.mycashtask.viewmodel.auth.LoginViewModel
 import dagger.hilt.android.AndroidEntryPoint
 
@@ -21,6 +24,16 @@ class LoginFragment : BaseFragment<FragmentLoginBinding, LoginViewModel>() {
     }
 
     override fun listeners() {
+        binding.apply {
+            goToSignUp.setOnClickListener {
+                Navigation.findNavController(requireView())
+                    .navigate(R.id.action_loginFragment_to_signUpFragment)
+            }
+
+            forgotPassword.setOnClickListener {
+                Utils.notImplemented()
+            }
+        }
     }
 
     override fun initializeViewModel() {

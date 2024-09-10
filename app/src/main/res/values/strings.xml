@@ -8,6 +8,23 @@
     <string name="update_application">Update App</string>
     <string name="message_update_application">A new version of the app is available. Please update to the latest version.</string>
     <string name="something_went_wrong_message">Something went wrong.</string>
-    <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="login">LOGIN</string>
+    <string name="email">Email.</string>
+    <string name="write_your_email">Write your email</string>
+    <string name="write_8_character_at_least">Write 8 character at least</string>
+    <string name="password">Password</string>
+    <string name="forgot_the_password">Forgot the password ?</string>
+    <string name="login_lowercase">Login</string>
+    <string name="don_t_have_an_account">Don’t have an account ?</string>
+    <string name="sign_up">Sign up</string>
+    <string name="sign_up_upper_case">SIGN UP</string>
+    <string name="name">Name.</string>
+    <string name="write_14_character">Write 14 character</string>
+    <string name="write_11_numbers">Write 11 numbers</string>
+    <string name="phone_number">Phone Number.</string>
+    <string name="confirm_password">Confirm Password</string>
+    <string name="write_your_password_again">Write your password again</string>
+    <string name="sign_up_lower_case">Sign up</string>
+    <string name="have_an_account">have an account ?</string>
+    <string name="log_in">Log in</string>
 </resources>

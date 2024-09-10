@@ -1,6 +1,8 @@
 package com.bb4first.mycashtask.ui.auth
 
 import androidx.fragment.app.viewModels
+import androidx.navigation.Navigation
+import com.bb4first.mycashtask.R
 import com.bb4first.mycashtask.base.BaseFragment
 import com.bb4first.mycashtask.base.StartInflation
 import com.bb4first.mycashtask.databinding.FragmentSignUpBinding
@@ -17,18 +19,20 @@ class SignUpFragment : BaseFragment<FragmentSignUpBinding, SignUpViewModel>() {
     override fun getInjectViewModel(): SignUpViewModel = signUpViewModel
 
     override fun initialization() {
-        TODO("Not yet implemented")
     }
 
     override fun listeners() {
-        TODO("Not yet implemented")
+        binding.apply {
+            login.setOnClickListener {
+                Navigation.findNavController(requireView())
+                    .navigate(R.id.action_signUpFragment_to_loginFragment)
+            }
+        }
     }
 
     override fun initializeViewModel() {
-        TODO("Not yet implemented")
     }
 
     override fun showErrorView(networkError: ErrorViewType, resourceId: Int) {
-        TODO("Not yet implemented")
     }
 }

@@ -329,6 +329,10 @@ object Utils {
         Toast.makeText(MyCashTaskApplication.instance, this, Toast.LENGTH_SHORT).show()
     }
 
+    fun notImplemented() {
+        "Not implemented".toast()
+    }
+
     fun getTimeStampUtc(): Long {
         return System.currentTimeMillis()
     }
@@ -387,7 +391,7 @@ object Utils {
         Log.wtf(title, if (this is String) this else this.toString())
     }
 
-    fun Activity.logout(){
+    fun Activity.logout() {
         SharedPreferencesModule.logout()
     }
 }
