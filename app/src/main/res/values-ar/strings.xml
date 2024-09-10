@@ -1,5 +1,30 @@
 <resources>
-    <string name="app_name">ماي كاش تاسك</string>
+    <string name="app_name">يجهز</string>
     <string name="language_arabic">العربية</string>
     <string name="language_english">الإنجليزية</string>
+    <string name="okay">موافق</string>
+    <string name="cancel">إلغاء</string>
+    <string name="network_disconnected_message">تعذر الاتصال. يرجى التحقق من اتصال الإنترنت الخاص بك للمتابعة.</string>
+    <string name="update_application">تحديث التطبيق</string>
+    <string name="message_update_application">تتوفر نسخة جديدة من التطبيق. يرجى التحديث إلى أحدث إصدار.</string>
+    <string name="something_went_wrong_message">حدث خطأ ما.</string>
+    <string name="login">تسجيل الدخول</string>
+    <string name="email">البريد الإلكتروني</string>
+    <string name="write_your_email">اكتب بريدك الإلكتروني</string>
+    <string name="write_8_character_at_least">اكتب 8 أحرف على الأقل</string>
+    <string name="password">كلمة المرور</string>
+    <string name="forgot_the_password">نسيت كلمة المرور؟</string>
+    <string name="login_lowercase">تسجيل الدخول</string>
+    <string name="don_t_have_an_account">ليس لديك حساب؟</string>
+    <string name="sign_up">التسجيل</string>
+    <string name="sign_up_upper_case">التسجيل</string>
+    <string name="name">الاسم</string>
+    <string name="write_14_character">اكتب 14 حرفًا</string>
+    <string name="write_11_numbers">اكتب 11 رقمًا</string>
+    <string name="phone_number">رقم الهاتف</string>
+    <string name="confirm_password">تأكيد كلمة المرور</string>
+    <string name="write_your_password_again">أعد كتابة كلمة المرور</string>
+    <string name="sign_up_lower_case">التسجيل</string>
+    <string name="have_an_account">هل لديك حساب؟</string>
+    <string name="log_in">تسجيل الدخول</string>
 </resources>

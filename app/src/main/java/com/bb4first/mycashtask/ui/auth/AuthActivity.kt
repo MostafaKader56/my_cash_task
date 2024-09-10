@@ -1,21 +1,34 @@
 package com.bb4first.mycashtask.ui.auth
 
-import android.os.Bundle
-import androidx.activity.enableEdgeToEdge
-import androidx.appcompat.app.AppCompatActivity
-import androidx.core.view.ViewCompat
-import androidx.core.view.WindowInsetsCompat
-import com.bb4first.mycashtask.R
+import android.view.LayoutInflater
+import androidx.activity.OnBackPressedCallback
+import androidx.navigation.Navigation
+import com.bb4first.mycashtask.base.BaseActivity
+import com.bb4first.mycashtask.databinding.ActivityAuthBinding
+import dagger.hilt.android.AndroidEntryPoint
 
-class AuthActivity : AppCompatActivity() {
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        enableEdgeToEdge()
-        setContentView(R.layout.activity_auth)
-        ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main)) { v, insets ->
-            val systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars())
-            v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
-            insets
-        }
+@AndroidEntryPoint
+class AuthActivity : BaseActivity<ActivityAuthBinding>() {
+    override val bindingFactory: (LayoutInflater) -> ActivityAuthBinding
+        get() = ActivityAuthBinding::inflate
+
+    override fun initialization() {
+
+    }
+
+    override fun setListeners() {
+        handleOnBackPressed()
+    }
+
+    private fun handleOnBackPressed() {
+        onBackPressedDispatcher.addCallback(this, object : OnBackPressedCallback(true) {
+            override fun handleOnBackPressed() {
+                val navController = Navigation.findNavController(binding.activityAuth)
+                if (!navController.popBackStack()) {
+                    // If no fragments in the back stack, finish the activity
+                    finish()
+                }
+            }
+        })
     }
 }

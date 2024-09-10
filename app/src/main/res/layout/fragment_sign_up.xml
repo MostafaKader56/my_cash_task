@@ -1,0 +1,149 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ui.auth.SignUpFragment">
+
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:importantForAccessibility="no"
+        android:scaleType="centerCrop"
+        android:src="@drawable/auth_bg" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1">
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true"
+                android:importantForAccessibility="no"
+                android:src="@drawable/auth_logo" />
+
+        </RelativeLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/bg_auth_top_rounded_corners"
+            android:orientation="vertical"
+            android:paddingHorizontal="@dimen/_20dp">
+
+            <FrameLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:background="@drawable/bg_auth_fragment_title"
+                android:elevation="@dimen/_8dp"
+                android:paddingHorizontal="@dimen/_45dp"
+                android:paddingVertical="@dimen/_20dp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/tt_commons_bold"
+                    android:text="@string/sign_up_upper_case"
+                    android:textColor="@color/black_text_color"
+                    android:textStyle="bold" />
+
+            </FrameLayout>
+
+            <com.bb4first.mycashtask.ui.components.EditTextComponent
+                android:id="@+id/et_name"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/_25dp"
+                app:component_hint="@string/write_14_character"
+                app:component_label="@string/name"
+                app:text_inputType="text" />
+
+            <com.bb4first.mycashtask.ui.components.EditTextComponent
+                android:id="@+id/et_email"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/_14dp"
+                app:component_hint="@string/write_your_email"
+                app:component_label="@string/email"
+                app:text_inputType="email" />
+
+            <com.bb4first.mycashtask.ui.components.EditTextComponent
+                android:id="@+id/et_phone"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/_14dp"
+                app:component_hint="@string/write_11_numbers"
+                app:component_label="@string/phone_number"
+                app:text_inputType="phone" />
+
+            <com.bb4first.mycashtask.ui.components.EditTextComponent
+                android:id="@+id/et_password"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/_14dp"
+                app:component_hint="@string/write_8_character_at_least"
+                app:component_label="@string/password"
+                app:text_inputType="password" />
+
+            <com.bb4first.mycashtask.ui.components.EditTextComponent
+                android:id="@+id/et_confirm_password"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/_14dp"
+                app:component_hint="@string/write_your_password_again"
+                app:component_label="@string/confirm_password"
+                app:text_inputType="password" />
+
+            <Button
+                android:id="@+id/btn_sign_up"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/_50dp"
+                android:layout_marginHorizontal="@dimen/_40dp"
+                android:layout_marginTop="@dimen/_40dp"
+                android:backgroundTint="@color/teal_green"
+                android:text="@string/sign_up_lower_case"
+                android:textColor="@color/white"
+                android:textSize="@dimen/_24sp"
+                app:cornerRadius="@dimen/_12dp" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginTop="@dimen/_35dp"
+                android:layout_marginBottom="@dimen/_40dp"
+                android:gravity="center_horizontal"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/have_an_account" />
+
+                <TextView
+                    android:id="@+id/txt_login"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="7dp"
+                    android:clickable="true"
+                    android:focusable="true"
+                    android:text="@string/log_in"
+                    android:textColor="@color/desert_tan"
+                    android:textStyle="bold" />
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

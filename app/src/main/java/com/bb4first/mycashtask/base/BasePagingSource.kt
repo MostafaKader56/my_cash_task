@@ -81,11 +81,11 @@ abstract class BasePagingSource<ItemType : Any, CallResponseType>(
             if (response != null) {
                 if (response.isSuccessful && response.body() != null) {
                     val responseBody = response.body()
-                    when (responseBody?.status) {
+                    when (responseBody?.responseCode) {
                         // TODO: Return to the back end if this codes is working in this project?
                         200, 201, 204 -> {
-                            if (responseBody.response != null) return ExecutePaginationCallResult.Success(
-                                convert(responseBody.response!!)
+                            if (responseBody.data != null) return ExecutePaginationCallResult.Success(
+                                convert(responseBody.data!!)
                             )
                             else return ExecutePaginationCallResult.Error.StaticKinds(
                                 PaginationStaticErrorsKind.Unknown

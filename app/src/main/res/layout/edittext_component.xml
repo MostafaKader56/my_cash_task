@@ -6,36 +6,37 @@
     android:layout_height="@dimen/_50dp">
 
     <TextView
-        android:id="@+id/label"
+        android:id="@+id/txt_label"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginStart="@dimen/_12dp"
-        android:textColor="@color/black"
+        android:textColor="@color/black_text_color"
         android:textSize="@dimen/_10ssp"
+        android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        tools:text="Label." />
 
     <EditText
         android:id="@+id/edittext"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="@dimen/_54dp"
         android:background="@drawable/bg_edittext"
         android:elevation="0dp"
         android:importantForAutofill="no"
         android:inputType="text"
-        android:maxLength="14"
         android:padding="@dimen/_12dp"
         android:textColor="@color/black"
         android:textColorHint="@color/color_light_gray"
         android:textSize="16sp"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/label"
+        app:layout_constraintTop_toBottomOf="@id/txt_label"
         tools:hint="Hint."
         tools:ignore="LabelFor" />
 
     <TextView
-        android:id="@+id/tv_error"
+        android:id="@+id/txt_tv_error"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginHorizontal="@dimen/_12dp"

@@ -23,7 +23,7 @@ class EditTextComponent(context: Context, attrs: AttributeSet?) : ConstraintLayo
 
     var errorMessage: String = ""
         set(value) {
-            binding.tvError.apply {
+            binding.txtTvError.apply {
                 // We can make it Visible and Invisible instead of Gone and Visible.
                 visibility = if (value.isEmpty()) View.GONE else View.VISIBLE
                 text = value
@@ -43,22 +43,20 @@ class EditTextComponent(context: Context, attrs: AttributeSet?) : ConstraintLayo
             R.styleable.EditTextComponent, 0, 0
         )
 
-        val componentText =
-            typedArray.getString(R.styleable.EditTextComponent_component_text) ?: ""
-        val componentHint =
-            typedArray.getString(R.styleable.EditTextComponent_component_hint) ?: ""
-        val componentLabel =
-            typedArray.getString(R.styleable.EditTextComponent_component_label) ?: ""
+        val componentText = typedArray.getString(R.styleable.EditTextComponent_component_text) ?: ""
+        val componentHint = typedArray.getString(R.styleable.EditTextComponent_component_hint) ?: ""
+        val componentLabel = typedArray.getString(R.styleable.EditTextComponent_component_label) ?: ""
         val componentInputType = typedArray.getInt(
             R.styleable.EditTextComponent_text_inputType,
             TextInputType.TEXT.type
         )
         val autofillHints = typedArray.getString(R.styleable.EditTextComponent_autofillHints)
+        val componentLength = typedArray.getInteger(R.styleable.EditTextComponent_max_length, 250)
 
         typedArray.recycle()
 
         text = componentText
-        binding.label.text = componentLabel
+        binding.txtLabel.text = componentLabel
         binding.edittext.hint = componentHint
         binding.edittext.inputType = when (componentInputType) {
             TextInputType.TEXT.type -> InputType.TYPE_CLASS_TEXT
@@ -70,6 +68,10 @@ class EditTextComponent(context: Context, attrs: AttributeSet?) : ConstraintLayo
             TextInputType.CURRENCY.type -> InputType.TYPE_CLASS_NUMBER or InputType.TYPE_NUMBER_FLAG_DECIMAL
             else -> InputType.TYPE_CLASS_TEXT
         }
+
+        // Set max length filter
+        binding.edittext.filters = arrayOf(android.text.InputFilter.LengthFilter(componentLength))
+
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
             binding.edittext.setAutofillHints(
                 *autofillHints?.split(",")?.toTypedArray() ?: emptyArray()
