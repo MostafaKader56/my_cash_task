@@ -31,8 +31,15 @@ class SignUpFragment : BaseFragment<FragmentSignUpBinding, SignUpViewModel>() {
     override fun listeners() {
         binding.apply {
             txtLogin.setOnClickListener {
-                Navigation.findNavController(requireView())
-                    .navigate(R.id.action_signUpFragment_to_loginFragment)
+                val navController = Navigation.findNavController(requireView())
+                val previousBackStackEntry = navController.previousBackStackEntry
+
+                if (previousBackStackEntry?.destination?.id == R.id.loginFragment) {
+                    navController.popBackStack()
+                } else {
+                    navController
+                        .navigate(R.id.action_signUpFragment_to_loginFragment)
+                }
             }
 
             btnSignUp.setOnClickListener {
