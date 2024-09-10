@@ -25,11 +25,16 @@
         </item>
 
         <item name="android:fontFamily">@font/app_font_family</item>
-
         <item name="android:textColor">@color/black_text_color</item>
     </style>
 
     <style name="Theme.MyCashTask" parent="Base.Theme.MyCashTask" />
+
+    <style name="Theme.MyCashTask.Home" parent="Base.Theme.MyCashTask">
+        <item name="android:statusBarColor">@color/white</item>
+        <item name="android:windowLightStatusBar">true</item>
+    </style>
+
 
     <style name="Theme.MyCashTask.NoStatusBar" parent="Base.Theme.MyCashTask">
         <item name="android:windowFullscreen">true</item>
