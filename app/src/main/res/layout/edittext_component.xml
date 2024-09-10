@@ -19,7 +19,7 @@
     <EditText
         android:id="@+id/edittext"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="@dimen/_54dp"
         android:background="@drawable/bg_edittext"
         android:elevation="0dp"
         android:importantForAutofill="no"

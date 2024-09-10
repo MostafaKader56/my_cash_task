@@ -1,4 +1,5 @@
 <resources xmlns:tools="http://schemas.android.com/tools">
+
     <style name="Base.Theme.MyCashTask" parent="Theme.Material3.DayNight.NoActionBar">
         <item name="colorPrimary">@color/my_light_primary</item>
         <item name="colorPrimaryVariant">@color/my_light_primary_variant</item>
@@ -12,18 +13,29 @@
         <item name="colorError">@color/my_light_error</item>
         <item name="colorOnError">@color/my_light_on_error</item>
 
-        <item name="android:windowSplashScreenBackground">@color/splash_screen_background</item>
-        <item name="android:windowSplashScreenAnimatedIcon">@mipmap/ic_launcher</item>
-        <item name="android:windowSplashScreenAnimationDuration">1000</item>
-        <item name="android:windowSplashScreenIconBackgroundColor">@color/splash_screen_icon_background</item>
+        <item name="android:windowSplashScreenBackground" tools:targetApi="s">
+            @color/splash_screen_background
+        </item>
+        <item name="android:windowSplashScreenAnimatedIcon" tools:targetApi="s">
+            @mipmap/ic_launcher
+        </item>
+        <item name="android:windowSplashScreenAnimationDuration" tools:targetApi="s">1000</item>
+        <item name="android:windowSplashScreenIconBackgroundColor" tools:targetApi="s">
+            @color/splash_screen_icon_background
+        </item>
 
     </style>
 
     <style name="Theme.MyCashTask" parent="Base.Theme.MyCashTask" />
 
+    <style name="Theme.MyCashTask.NoStatusBar" parent="Base.Theme.MyCashTask">
+        <item name="android:windowFullscreen">true</item>
+        <item name="android:windowNoTitle">true</item>
+    </style>
+
     <style name="CustomProgressBarTheme">
         <item name="android:windowTranslucentStatus" tools:ignore="NewApi">true</item>
-        <item name="android:windowLightStatusBar" tools:targetApi="m">false</item>
+        <item name="android:windowLightStatusBar">false</item>
         <item name="android:windowBackground">@color/transparent</item>
     </style>
 </resources>
