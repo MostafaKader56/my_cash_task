@@ -21,7 +21,8 @@
             android:exported="false" />
         <activity
             android:name=".ui.auth.AuthActivity"
-            android:exported="false" />
+            android:exported="false"
+            android:theme="@style/Theme.MyCashTask.NoStatusBar" />
         <activity
             android:name=".ui.splash.RoutingActivity"
             android:exported="true">
