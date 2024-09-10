@@ -25,12 +25,12 @@ class LoginFragment : BaseFragment<FragmentLoginBinding, LoginViewModel>() {
 
     override fun listeners() {
         binding.apply {
-            goToSignUp.setOnClickListener {
+            txtGoToSignUp.setOnClickListener {
                 Navigation.findNavController(requireView())
                     .navigate(R.id.action_loginFragment_to_signUpFragment)
             }
 
-            forgotPassword.setOnClickListener {
+            txtForgotPassword.setOnClickListener {
                 Utils.notImplemented()
             }
         }

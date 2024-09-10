@@ -27,4 +27,13 @@
     <string name="sign_up_lower_case">Sign up</string>
     <string name="have_an_account">have an account ?</string>
     <string name="log_in">Log in</string>
+    <string name="enter_name">Enter name.</string>
+    <string name="very_short_name">Very short name.</string>
+    <string name="email_not_valid">Email not valid.</string>
+    <string name="enter_email">Enter Email.</string>
+    <string name="enter_a_valid_phone">Enter a valid Phone.</string>
+    <string name="enter_phone_number">Enter Phone number.</string>
+    <string name="enter_password">Enter password.</string>
+    <string name="password_should_be_8_characters_at_least">Password should be 8 characters at least.</string>
+    <string name="passwords_not_matches">Passwords not matches.</string>
 </resources>

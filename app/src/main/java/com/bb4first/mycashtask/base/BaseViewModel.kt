@@ -10,10 +10,11 @@ import androidx.paging.PagingData
 import androidx.paging.PagingSource
 import androidx.paging.cachedIn
 import androidx.paging.liveData
-import com.bb4first.mycashtask.R
 import com.bb4first.mycashtask.MyCashTaskApplication
+import com.bb4first.mycashtask.R
 import com.bb4first.mycashtask.sealed.ExecutePaginationCallResult
 import com.bb4first.mycashtask.utlis.NetworkUtils
+import com.bb4first.mycashtask.utlis.Utils.logCat
 import dagger.hilt.android.scopes.ViewModelScoped
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
@@ -63,10 +64,15 @@ abstract class BaseViewModel() : ViewModel() {
             if (response != null) {
                 if (response.isSuccessful && response.body() != null) {
                     val responseBody = response.body()
-                    when (responseBody?.status) {
+                    when (responseBody?.responseCode) {
                         // TODO: Return to the back end if this codes is working in this project?
                         200, 201, 204 -> {
-                            onSuccessfulResponse(id, responseBody.response, uiState)
+                            onSuccessfulResponse(
+                                id,
+                                responseBody.data,
+                                responseBody.message,
+                                uiState,
+                            )
                         }
 
                         401 -> {
@@ -75,6 +81,11 @@ abstract class BaseViewModel() : ViewModel() {
 
                         422 -> {
                             forceUpdateApp.postValue(responseBody.message ?: "")
+                        }
+
+                        405 -> {
+                            response.errorBody().logCat()
+                            onFailedResponse(id, responseBody.message ?: "", uiState)
                         }
 
                         else -> {
@@ -131,7 +142,7 @@ abstract class BaseViewModel() : ViewModel() {
     }
 
     abstract fun <T, I, U : BaseItemUIState<I>> onSuccessfulResponse(
-        id: Int, response: T, uiState: U? = null
+        id: Int, response: T, message: String?, uiState: U? = null
     )
 
     abstract fun <I, U : BaseItemUIState<I>> onFailedResponse(

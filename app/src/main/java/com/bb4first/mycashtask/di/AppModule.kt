@@ -1,5 +1,10 @@
 package com.bb4first.mycashtask.di
 
+import com.bb4first.mycashtask.nerwork.ApiService
+import com.bb4first.mycashtask.nerwork.api_helper.LoginApiHelper
+import com.bb4first.mycashtask.nerwork.api_helper.SignUpApiHelper
+import com.bb4first.mycashtask.nerwork.api_helper_impl.LoginApiHelperImpl
+import com.bb4first.mycashtask.nerwork.api_helper_impl.SignUpApiHelperImpl
 import com.bb4first.mycashtask.utlis.Constants
 import com.jakewharton.retrofit2.adapter.kotlin.coroutines.CoroutineCallAdapterFactory
 import dagger.Module
@@ -50,4 +55,19 @@ object AppModule {
             .client(okHttpClient)
             .addCallAdapterFactory(CoroutineCallAdapterFactory())
             .build()
+
+    @Provides
+    @Singleton
+    fun provideApiService(retrofit: Retrofit): ApiService =
+        retrofit.create(ApiService::class.java)
+
+    @Provides
+    @Singleton
+    fun provideLoginApiHelper(apiHelper: LoginApiHelperImpl): LoginApiHelper = apiHelper
+
+    @Provides
+    @Singleton
+    fun provideSignUpApiHelper(apiHelper: SignUpApiHelperImpl): SignUpApiHelper = apiHelper
+
+
 }

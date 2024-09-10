@@ -4,6 +4,7 @@
         <attr name="component_text" format="string" />
         <attr name="component_hint" format="string" />
         <attr name="component_label" format="string" />
+        <attr name="max_length" format="integer" />
         <attr name="text_inputType">
             <enum name="text" value="0" />
             <enum name="text_multi_line" value="5" />

@@ -2,8 +2,6 @@ package com.bb4first.mycashtask.viewmodel.auth
 
 import com.bb4first.mycashtask.base.BaseItemUIState
 import com.bb4first.mycashtask.base.BaseViewModel
-import dagger.hilt.android.lifecycle.HiltViewModel
-import javax.inject.Inject
 
 //@HiltViewModel
 class LoginViewModel
@@ -14,6 +12,7 @@ class LoginViewModel
     override fun <T, I, U : BaseItemUIState<I>> onSuccessfulResponse(
         id: Int,
         response: T,
+        message: String?,
         uiState: U?
     ) {
 

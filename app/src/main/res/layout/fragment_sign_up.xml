@@ -59,6 +59,7 @@
             </FrameLayout>
 
             <com.bb4first.mycashtask.ui.components.EditTextComponent
+                android:id="@+id/et_name"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="@dimen/_25dp"
@@ -67,6 +68,7 @@
                 app:text_inputType="text" />
 
             <com.bb4first.mycashtask.ui.components.EditTextComponent
+                android:id="@+id/et_email"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="@dimen/_14dp"
@@ -75,6 +77,7 @@
                 app:text_inputType="email" />
 
             <com.bb4first.mycashtask.ui.components.EditTextComponent
+                android:id="@+id/et_phone"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="@dimen/_14dp"
@@ -83,6 +86,7 @@
                 app:text_inputType="phone" />
 
             <com.bb4first.mycashtask.ui.components.EditTextComponent
+                android:id="@+id/et_password"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="@dimen/_14dp"
@@ -91,6 +95,7 @@
                 app:text_inputType="password" />
 
             <com.bb4first.mycashtask.ui.components.EditTextComponent
+                android:id="@+id/et_confirm_password"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="@dimen/_14dp"
@@ -99,6 +104,7 @@
                 app:text_inputType="password" />
 
             <Button
+                android:id="@+id/btn_sign_up"
                 android:layout_width="match_parent"
                 android:layout_height="@dimen/_50dp"
                 android:layout_marginHorizontal="@dimen/_40dp"
@@ -124,7 +130,7 @@
                     android:text="@string/have_an_account" />
 
                 <TextView
-                    android:id="@+id/login"
+                    android:id="@+id/txt_login"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="7dp"
