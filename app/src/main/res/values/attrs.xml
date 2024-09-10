@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <declare-styleable name="EditTextComponent">
+        <attr name="component_text" format="string" />
+        <attr name="component_hint" format="string" />
+        <attr name="component_label" format="string" />
+        <attr name="text_inputType">
+            <enum name="text" value="0" />
+            <enum name="text_multi_line" value="5" />
+            <enum name="email" value="1" />
+            <enum name="password" value="2" />
+            <enum name="phone" value="3" />
+            <enum name="currency" value="4" />
+            <enum name="number" value="6" />
+        </attr>
+        <attr name="autofillHints" format="string|reference" />
+    </declare-styleable>
+</resources>

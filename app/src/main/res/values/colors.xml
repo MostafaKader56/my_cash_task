@@ -4,6 +4,7 @@
     <color name="black">@android:color/black</color>
     <color name="transparent">@android:color/transparent</color>
 
+    <color name="color_light_gray">#CCCCCC</color>
     <color name="my_light_primary">#6200EE</color>
     <color name="my_light_primary_variant">#3700B3</color>
     <color name="my_light_on_primary">#FFFFFF</color>
@@ -39,4 +40,6 @@
 
     <color name="linear_start_color">#003441</color>
     <color name="linear_end_color">#456F79</color>
+    <color name="color_black_4">#0A000000</color>
+    <color name="color_black_10">#1A000000</color>
 </resources>
