@@ -9,6 +9,7 @@ import com.bb4first.mycashtask.base.SingleLiveEvent
 import com.bb4first.mycashtask.model.auth.SignUpResponse
 import com.bb4first.mycashtask.nerwork.YjahzResource
 import com.bb4first.mycashtask.repository.auth.SignUpRepository
+import com.bb4first.mycashtask.utlis.SharedPreferencesModule
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
@@ -22,34 +23,6 @@ class SignUpViewModel @Inject constructor(private val signUpRepository: SignUpRe
     val registerUserResponseLiveData: LiveData<YjahzResource<SignUpResponse, Any?>>
         get() = registerUserResponse
 
-    override fun <T, I, U : BaseItemUIState<I>> onSuccessfulResponse(
-        id: Int, response: T, message: String?, uiState: U?
-    ) {
-        when (id) {
-            R.id.sign_up -> {
-                registerUserResponse.value =
-                    YjahzResource.Success<SignUpResponse, Any>(
-                        data = response as SignUpResponse,
-                        message = message,
-                        uiState = null,
-                    )
-            }
-        }
-    }
-
-    override fun <I, U : BaseItemUIState<I>> onFailedResponse(
-        id: Int, response: String, uiState: U?
-    ) {
-        when (id) {
-            R.id.sign_up -> {
-                registerUserResponse.value =
-                    YjahzResource.Failure<Any>(
-                        uiState = null,
-                        error = response,
-                    )
-            }
-        }
-    }
 
     fun signUp(
         name: String,
@@ -78,6 +51,42 @@ class SignUpViewModel @Inject constructor(private val signUpRepository: SignUpRe
             )
 
             startLoading.postValue(false)
+        }
+    }
+
+    override fun <T> onSuccessfulResponse(
+        id: Int,
+        response: T,
+        message: String?,
+        uiState: BaseItemUIState<Any>?
+    ) {
+        when (id) {
+            R.id.sign_up -> {
+                val signUpResponse = response as SignUpResponse
+                SharedPreferencesModule.setStringValue(
+                    SharedPreferencesModule.PREF_APP_TOKEN,
+                    signUpResponse.token
+                )
+                SharedPreferencesModule.setUserValue(signUpResponse)
+                registerUserResponse.value =
+                    YjahzResource.Success(
+                        data = signUpResponse,
+                        message = message,
+                        uiState = uiState,
+                    )
+            }
+        }
+    }
+
+    override fun onFailedResponse(id: Int, response: String, uiState: BaseItemUIState<Any>?) {
+        when (id) {
+            R.id.sign_up -> {
+                registerUserResponse.value =
+                    YjahzResource.Failure(
+                        uiState = uiState,
+                        error = response,
+                    )
+            }
         }
     }
 }

@@ -7,7 +7,7 @@ import okhttp3.MultipartBody
 import javax.inject.Inject
 
 class SignUpApiHelperImpl @Inject constructor(private val apiService: ApiService) :
-    SignUpApiHelper, RequestHeaders() {
+    SignUpApiHelper {
     override suspend fun signUp(
         name: String,
         email: String,
@@ -15,7 +15,7 @@ class SignUpApiHelperImpl @Inject constructor(private val apiService: ApiService
         phone: String,
         deviceToken: String
     ) = apiService.signUp(
-        headers = getHeaders(),
+        headers = RequestHeaders.getHeaders(),
         name = MultipartBody.Part.createFormData("name", name),
         email = MultipartBody.Part.createFormData("email", email),
         password = MultipartBody.Part.createFormData("password", password),

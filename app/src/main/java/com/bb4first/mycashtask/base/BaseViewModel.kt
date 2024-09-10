@@ -37,10 +37,10 @@ abstract class BaseViewModel() : ViewModel() {
         get() = forceUpdateApp
 
 
-    suspend fun <T, I : BaseItemUIState<T>> executeRequest(
+    suspend fun <T : Any, I : BaseItemUIState<T>> executeRequest(
         id: Int,
         request: suspend () -> Unit,
-        uiState: I?,
+        uiState: BaseItemUIState<Any>?,
     ) {
         if (NetworkUtils.isConnected(MyCashTaskApplication.instance)) {
             request.invoke()
@@ -55,10 +55,10 @@ abstract class BaseViewModel() : ViewModel() {
         }
     }
 
-    suspend fun <T, I : BaseItemUIState<T>> handleResponse(
+    suspend fun <T : Any> handleResponse(
         id: Int,
         response: Response<BaseResponse<T>>?,
-        uiState: I?,
+        uiState: BaseItemUIState<Any>?,
     ) {
         withContext(Dispatchers.Main) {
             if (response != null) {
@@ -141,13 +141,13 @@ abstract class BaseViewModel() : ViewModel() {
         ).liveData.cachedIn(viewModelScope)
     }
 
-    abstract fun <T, I, U : BaseItemUIState<I>> onSuccessfulResponse(
-        id: Int, response: T, message: String?, uiState: U? = null
+    abstract fun <T : Any?> onSuccessfulResponse(
+        id: Int, response: T, message: String?, uiState: BaseItemUIState<Any>? = null
     )
 
-    abstract fun <I, U : BaseItemUIState<I>> onFailedResponse(
+    abstract fun onFailedResponse(
         id: Int,
         response: String,
-        uiState: U? = null
+        uiState: BaseItemUIState<Any>? = null
     )
 }

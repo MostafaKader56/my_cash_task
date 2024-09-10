@@ -11,7 +11,7 @@ sealed class YjahzResource<out T, out U> {
 
     data class Failure<U>(
         val error: String? = null,
-        val uiState: BaseItemUIState<U>?
+        val uiState: BaseItemUIState<Any>?
     ) : YjahzResource<Nothing, U>()
 
     data object Loading : YjahzResource<Nothing, Nothing>()

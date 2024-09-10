@@ -17,4 +17,5 @@ object Constants {
 
     // END POINTS
     const val SIGN_UP = "client-register"
+    const val LOGIN = "login"
 }

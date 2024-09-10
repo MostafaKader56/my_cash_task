@@ -59,6 +59,7 @@
             </FrameLayout>
 
             <com.bb4first.mycashtask.ui.components.EditTextComponent
+                android:id="@+id/et_email"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="@dimen/_25dp"
@@ -67,6 +68,7 @@
                 app:text_inputType="email" />
 
             <com.bb4first.mycashtask.ui.components.EditTextComponent
+                android:id="@+id/et_password"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="@dimen/_14dp"
@@ -85,6 +87,7 @@
                 android:textColor="@color/grey_text_color" />
 
             <Button
+                android:id="@+id/btn_login"
                 android:layout_width="match_parent"
                 android:layout_height="@dimen/_50dp"
                 android:layout_marginHorizontal="@dimen/_40dp"

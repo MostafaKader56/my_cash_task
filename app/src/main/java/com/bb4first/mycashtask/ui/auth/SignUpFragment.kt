@@ -1,5 +1,6 @@
 package com.bb4first.mycashtask.ui.auth
 
+import android.content.Intent
 import androidx.fragment.app.viewModels
 import androidx.navigation.Navigation
 import com.bb4first.mycashtask.R
@@ -8,10 +9,10 @@ import com.bb4first.mycashtask.base.StartInflation
 import com.bb4first.mycashtask.databinding.FragmentSignUpBinding
 import com.bb4first.mycashtask.enums.ErrorViewType
 import com.bb4first.mycashtask.nerwork.YjahzResource
+import com.bb4first.mycashtask.ui.home.HomeActivity
 import com.bb4first.mycashtask.utlis.Utils.isEmailValid
 import com.bb4first.mycashtask.utlis.Utils.isPhoneNumberValid
 import com.bb4first.mycashtask.utlis.Utils.isPhoneNumberValidWithoutPlus
-import com.bb4first.mycashtask.utlis.Utils.logCat
 import com.bb4first.mycashtask.utlis.Utils.toast
 import com.bb4first.mycashtask.viewmodel.auth.SignUpViewModel
 import dagger.hilt.android.AndroidEntryPoint
@@ -70,8 +71,7 @@ class SignUpFragment : BaseFragment<FragmentSignUpBinding, SignUpViewModel>() {
         } else if (phone.contains('+') && !phone.isPhoneNumberValid()) {
             binding.etPhone.errorMessage = getString(R.string.enter_a_valid_phone)
             isThereError = true
-        }
-        else if (!phone.contains('+') && !phone.isPhoneNumberValidWithoutPlus()){
+        } else if (!phone.contains('+') && !phone.isPhoneNumberValidWithoutPlus()) {
             binding.etPhone.errorMessage = getString(R.string.enter_a_valid_phone)
             isThereError = true
         }
@@ -96,20 +96,25 @@ class SignUpFragment : BaseFragment<FragmentSignUpBinding, SignUpViewModel>() {
     }
 
     override fun initializeViewModel() {
-        getUserResponseObserver()
+        getSignUpResponseObserver()
     }
 
-    private fun getUserResponseObserver() {
-        signUpViewModel.registerUserResponseLiveData.observe(viewLifecycleOwner){
-            when(it){
+    private fun getSignUpResponseObserver() {
+        signUpViewModel.registerUserResponseLiveData.observe(viewLifecycleOwner) {
+            when (it) {
                 is YjahzResource.Failure -> {
+                    (it.error ?: getString(R.string.something_went_wrong_message)).toast()
                 }
+
                 YjahzResource.Loading -> {
 
                 }
+
                 is YjahzResource.Success -> {
-                    "Success: ${it.data?.phone}".toast()
-                    "Success: ${it.data?.phone}".logCat()
+                    val intent = Intent(requireActivity(), HomeActivity::class.java)
+                    intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
+                    startActivity(intent)
+                    requireActivity().finish()
                 }
             }
         }

@@ -3,6 +3,7 @@ package com.bb4first.mycashtask.utlis
 import android.content.Context.MODE_PRIVATE
 import android.content.SharedPreferences
 import com.bb4first.mycashtask.MyCashTaskApplication
+import com.bb4first.mycashtask.model.auth.User
 
 object SharedPreferencesModule {
     private const val SHARED_PREFERENCES_NAME = "com.bb4first.mycashtask_SHARED_PREFERENCES_NAME"
@@ -36,9 +37,23 @@ object SharedPreferencesModule {
         return sharedPreferences.getInt(key, defaultValue)
     }
 
+
+    fun setUserValue(value: User) {
+        sharedPreferences.edit()?.apply {
+            putString(PREF_USER_DATA, value.toJson())
+            apply()
+        }
+    }
+
+    fun getUserValue(): User? {
+        val userJson = sharedPreferences.getString(PREF_USER_DATA, null)
+        return userJson?.let { User.fromJson(userJson) }
+    }
+
     fun isLoggedIn(): Boolean {
-        return sharedPreferences.contains(PREF_APP_TOKEN)
-                && sharedPreferences.contains(PREF_USER_DATA)
+        return sharedPreferences.contains(PREF_APP_TOKEN) && sharedPreferences.contains(
+            PREF_USER_DATA
+        )
     }
 
     fun logout() {

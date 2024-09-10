@@ -10,7 +10,7 @@ import com.bb4first.mycashtask.utlis.Utils.getAppCodeVersion
 import com.bb4first.mycashtask.utlis.Utils.getDeviceName
 import com.bb4first.mycashtask.utlis.Utils.getOurDeviceId
 
-open class RequestHeaders {
+object RequestHeaders {
     fun getHeaders() : Map<String, String> {
         val map = HashMap<String, String>()
         val appLanguage = LanguageConfiguration.getAppLanguage()
