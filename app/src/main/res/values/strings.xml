@@ -55,4 +55,5 @@
     <string name="distance_km">%1$s Km</string>
     <string name="unknown">Unknown</string>
     <string name="unable_to_detect_location">Unable to detect location</string>
+    <string name="permission_denied">permission denied</string>
 </resources>

@@ -55,4 +55,5 @@
     <string name="distance_km">%1$s كم</string>
     <string name="unknown">غير معروف</string>
     <string name="unable_to_detect_location">غير قادر على تحديد الموقع</string>
+    <string name="permission_denied">تم رفض الاذن</string>
 </resources>

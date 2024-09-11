@@ -2,7 +2,6 @@ package com.bb4first.mycashtask.ui.home
 
 import android.content.Intent
 import android.location.Location
-import android.os.Bundle
 import android.view.MenuInflater
 import android.view.MenuItem
 import android.view.View
@@ -39,35 +38,37 @@ class MainFragment : BaseFragment<FragmentMainBinding, MainViewModel>() {
     private val homePopularAdapter by lazy { HomePopularAdapter() }
     private val homeTrendingAdapter by lazy { HomeTrendingAdapter() }
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-
+    private fun getMainFragmentFullStatus() {
         mainViewModel.setLoading(true)
         (requireActivity() as HomeActivity).startGetLocation(
             object : HomeActivity.MyCashTaskLocationCallBack {
-                override fun onLocationReceived(location: Location?) {
+                override fun onLocationReceived(location: Location) {
                     mainViewModel.setLoading(false)
                     mainViewModel.getBaseHomeCategories()
-                    if (location != null) {
-                        mainViewModel.getTrendingSellers(
-                            lat = location.latitude,
-                            long = location.longitude
-                        )
-                        mainViewModel.getPopularSellers(
-                            lat = location.latitude,
-                            long = location.longitude
-                        )
-                    } else {
-                        getString(R.string.unable_to_detect_location).toast()
-                        mainViewModel.getTrendingSellers()
-                        mainViewModel.getPopularSellers()
-                    }
+                    mainViewModel.getTrendingSellers(
+                        lat = location.latitude,
+                        long = location.longitude
+                    )
+                    mainViewModel.getPopularSellers(
+                        lat = location.latitude,
+                        long = location.longitude
+                    )
+                }
+
+                override fun onFail(error: String) {
+                    mainViewModel.setLoading(false)
+                    error.toast()
+                    mainViewModel.getBaseHomeCategories()
+                    mainViewModel.getTrendingSellers()
+                    mainViewModel.getPopularSellers()
                 }
             },
         )
     }
 
     override fun initialization() {
+        getMainFragmentFullStatus()
+
         initializeHeaders()
         initializationCategoriesRecycler()
         initializationTrendingRecycler()

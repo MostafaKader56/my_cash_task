@@ -3,12 +3,15 @@ package com.bb4first.mycashtask.ui.home
 import android.Manifest
 import android.content.pm.PackageManager
 import android.location.Location
+import android.os.Bundle
 import android.view.LayoutInflater
 import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
+import com.bb4first.mycashtask.R
 import com.bb4first.mycashtask.base.BaseActivity
 import com.bb4first.mycashtask.databinding.ActivityHomeBinding
 import com.google.android.gms.location.FusedLocationProviderClient
+import com.google.android.gms.location.LocationServices
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
@@ -27,6 +30,12 @@ class HomeActivity : BaseActivity<ActivityHomeBinding>() {
 
     private var callback: MyCashTaskLocationCallBack? = null
 
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+
+        fusedLocationClient = LocationServices.getFusedLocationProviderClient(this)
+    }
+
     override fun initialization() {
     }
 
@@ -38,7 +47,20 @@ class HomeActivity : BaseActivity<ActivityHomeBinding>() {
         ) {
             fusedLocationClient.lastLocation
                 .addOnSuccessListener { location: Location? ->
-                    callback?.onLocationReceived(location)
+                    if (location != null) {
+                        callback?.onLocationReceived(location)
+                    } else {
+                        callback?.onFail(
+                            getString(R.string.unable_to_detect_location)
+                        )
+                    }
+                }
+                .addOnFailureListener {
+                    callback?.onFail(
+                        it.message ?: getString(
+                            R.string.unable_to_detect_location
+                        )
+                    )
                 }
         } else {
             ActivityCompat.requestPermissions(
@@ -50,7 +72,8 @@ class HomeActivity : BaseActivity<ActivityHomeBinding>() {
     }
 
     interface MyCashTaskLocationCallBack {
-        fun onLocationReceived(location: Location?)
+        fun onLocationReceived(location: Location)
+        fun onFail(error: String)
     }
 
     override fun onRequestPermissionsResult(
@@ -64,7 +87,9 @@ class HomeActivity : BaseActivity<ActivityHomeBinding>() {
         ) {
             startGetLocation(callback!!)
         } else {
-            callback!!.onLocationReceived(null)
+            callback?.onFail(
+                getString(R.string.permission_denied)
+            )
         }
     }
 
