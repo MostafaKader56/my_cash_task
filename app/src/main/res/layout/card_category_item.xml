@@ -2,13 +2,14 @@
 <androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    app:cardUseCompatPadding="true"
-    android:layout_width="@dimen/_130dp"
-    android:layout_height="@dimen/_110dp"
+    android:layout_width="@dimen/_136dp"
+    android:layout_height="@dimen/_114dp"
     android:elevation="@dimen/_9dp"
     android:paddingHorizontal="@dimen/_9dp"
     android:paddingVertical="@dimen/_18dp"
-    app:cardCornerRadius="@dimen/_12dp">
+    app:cardBackgroundColor="@color/white"
+    app:cardCornerRadius="@dimen/_12dp"
+    app:cardUseCompatPadding="true">
 
     <RelativeLayout
         android:layout_width="match_parent"
@@ -18,8 +19,7 @@
             android:id="@+id/img_category"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:importantForAccessibility="no"
-            tools:src="@drawable/ic_launcher_background" />
+            android:importantForAccessibility="no" />
 
         <TextView
             android:id="@+id/name_category"

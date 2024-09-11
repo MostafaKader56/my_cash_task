@@ -1,10 +1,12 @@
 package com.bb4first.mycashtask.di
 
 import com.bb4first.mycashtask.nerwork.ApiService
-import com.bb4first.mycashtask.nerwork.api_helper.LoginApiHelper
-import com.bb4first.mycashtask.nerwork.api_helper.SignUpApiHelper
-import com.bb4first.mycashtask.nerwork.api_helper_impl.LoginApiHelperImpl
-import com.bb4first.mycashtask.nerwork.api_helper_impl.SignUpApiHelperImpl
+import com.bb4first.mycashtask.nerwork.api_helper.auth.LoginApiHelper
+import com.bb4first.mycashtask.nerwork.api_helper.auth.SignUpApiHelper
+import com.bb4first.mycashtask.nerwork.api_helper.home.MainApiHelper
+import com.bb4first.mycashtask.nerwork.api_helper_impl.auth.LoginApiHelperImpl
+import com.bb4first.mycashtask.nerwork.api_helper_impl.auth.SignUpApiHelperImpl
+import com.bb4first.mycashtask.nerwork.api_helper_impl.home.MainApiHelperImpl
 import com.bb4first.mycashtask.utlis.Constants
 import com.jakewharton.retrofit2.adapter.kotlin.coroutines.CoroutineCallAdapterFactory
 import dagger.Module
@@ -28,6 +30,7 @@ object AppModule {
     @Singleton
     @Provides
     fun provideOkHttpClient(): OkHttpClient {
+        // TODO:
         return if (true) {
 //        return if (BuildConfig.DEBUG) {
             val loggingInterceptor = HttpLoggingInterceptor()
@@ -69,5 +72,7 @@ object AppModule {
     @Singleton
     fun provideSignUpApiHelper(apiHelper: SignUpApiHelperImpl): SignUpApiHelper = apiHelper
 
-
+    @Provides
+    @Singleton
+    fun provideMainApiHelper(apiHelper: MainApiHelperImpl): MainApiHelper = apiHelper
 }

@@ -36,5 +36,7 @@ class HomeSectionHeaderComponent(context: Context, attrs: AttributeSet?) :
         val componentText =
             typedArray.getString(R.styleable.HomeSectionHeaderComponent_header_text) ?: ""
         typedArray.recycle()
+
+        binding.headerText.text = componentText
     }
 }

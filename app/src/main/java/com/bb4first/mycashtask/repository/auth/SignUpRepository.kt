@@ -1,6 +1,6 @@
 package com.bb4first.mycashtask.repository.auth
 
-import com.bb4first.mycashtask.nerwork.api_helper.SignUpApiHelper
+import com.bb4first.mycashtask.nerwork.api_helper.auth.SignUpApiHelper
 import javax.inject.Inject
 
 class SignUpRepository @Inject constructor(private val signUpApiHelper: SignUpApiHelper) {

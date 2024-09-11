@@ -1,23 +1,31 @@
 package com.bb4first.mycashtask.ui.home
 
 import android.content.Intent
+import android.location.Location
+import android.os.Bundle
 import android.view.MenuInflater
 import android.view.MenuItem
 import android.view.View
 import android.widget.PopupMenu
 import androidx.fragment.app.viewModels
+import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 import com.bb4first.mycashtask.R
 import com.bb4first.mycashtask.base.BaseFragment
 import com.bb4first.mycashtask.base.StartInflation
 import com.bb4first.mycashtask.databinding.FragmentMainBinding
 import com.bb4first.mycashtask.enums.ErrorViewType
+import com.bb4first.mycashtask.nerwork.YjahzResource
 import com.bb4first.mycashtask.ui.auth.AuthActivity
 import com.bb4first.mycashtask.utlis.LanguageConfiguration
 import com.bb4first.mycashtask.utlis.LanguageSelectionDialog
 import com.bb4first.mycashtask.utlis.SharedPreferencesModule
 import com.bb4first.mycashtask.utlis.Utils
+import com.bb4first.mycashtask.utlis.Utils.toast
 import com.bb4first.mycashtask.viewmodel.home.MainViewModel
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class MainFragment : BaseFragment<FragmentMainBinding, MainViewModel>() {
     override val inflate: StartInflation<FragmentMainBinding>
         get() = FragmentMainBinding::inflate
@@ -26,8 +34,65 @@ class MainFragment : BaseFragment<FragmentMainBinding, MainViewModel>() {
 
     override fun getInjectViewModel(): MainViewModel = mainViewModel
 
-    override fun initialization() {
 
+    private val homeCategoriesAdapter by lazy { HomeCategoriesAdapter(LanguageConfiguration.getAppLanguageEnumObject()) }
+    private val homePopularAdapter by lazy { HomePopularAdapter() }
+    private val homeTrendingAdapter by lazy { HomeTrendingAdapter() }
+
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+
+        mainViewModel.setLoading(true)
+        (requireActivity() as HomeActivity).startGetLocation(
+            object : HomeActivity.MyCashTaskLocationCallBack {
+                override fun onLocationReceived(location: Location?) {
+                    mainViewModel.setLoading(false)
+                    mainViewModel.getBaseHomeCategories()
+                    if (location != null) {
+                        mainViewModel.getTrendingSellers(
+                            lat = location.latitude,
+                            long = location.longitude
+                        )
+                        mainViewModel.getPopularSellers(
+                            lat = location.latitude,
+                            long = location.longitude
+                        )
+                    } else {
+                        getString(R.string.unable_to_detect_location).toast()
+                        mainViewModel.getTrendingSellers()
+                        mainViewModel.getPopularSellers()
+                    }
+                }
+            },
+        )
+    }
+
+    override fun initialization() {
+        initializeHeaders()
+        initializationCategoriesRecycler()
+        initializationTrendingRecycler()
+        initializationPopularRecycler()
+        initializeErrorsPlaceholdersBtns()
+    }
+
+    private fun initializeErrorsPlaceholdersBtns() {
+        binding.errorRecyclerCategories.setOnRetryClickListener {
+            mainViewModel.getBaseHomeCategories()
+        }
+    }
+
+    private fun initializeHeaders() {
+        binding.headerCategories.setOnClickListener {
+            Utils.notImplemented()
+        }
+
+        binding.headerPopular.setOnClickListener {
+            Utils.notImplemented()
+        }
+
+        binding.headerTrending.setOnClickListener {
+            Utils.notImplemented()
+        }
     }
 
     override fun listeners() {
@@ -74,6 +139,33 @@ class MainFragment : BaseFragment<FragmentMainBinding, MainViewModel>() {
         }
     }
 
+    private fun initializationPopularRecycler() {
+        binding.recyclerPopular.apply {
+            adapter = homePopularAdapter
+            layoutManager = LinearLayoutManager(
+                requireContext(), RecyclerView.HORIZONTAL, false
+            )
+        }
+    }
+
+    private fun initializationTrendingRecycler() {
+        binding.recyclerTrending.apply {
+            adapter = homeTrendingAdapter
+            layoutManager = LinearLayoutManager(
+                requireContext(), RecyclerView.HORIZONTAL, false
+            )
+        }
+    }
+
+    private fun initializationCategoriesRecycler() {
+        binding.recyclerCategories.apply {
+            adapter = homeCategoriesAdapter
+            layoutManager = LinearLayoutManager(
+                requireContext(), RecyclerView.HORIZONTAL, false
+            )
+        }
+    }
+
     private fun showPopupMenu(view: View) {
         val popupMenu = PopupMenu(requireContext(), view)
         val inflater: MenuInflater = popupMenu.menuInflater
@@ -111,6 +203,7 @@ class MainFragment : BaseFragment<FragmentMainBinding, MainViewModel>() {
                             requireActivity().finish()
                         },
                     )
+                    homeCategoriesAdapter.itemCount.toString().toast()
                     true
                 }
 
@@ -121,6 +214,108 @@ class MainFragment : BaseFragment<FragmentMainBinding, MainViewModel>() {
     }
 
     override fun initializeViewModel() {
+        getHomeBaseCategoriesObserver()
+        getTrendingSellersObserver()
+        getPopularSellersObserver()
+    }
+
+    private fun getPopularSellersObserver() {
+        mainViewModel.getPopularSellersResponseLiveData.observe(viewLifecycleOwner) {
+            when (it) {
+                is YjahzResource.Failure -> {
+                    binding.loaderRecyclerPopular.stopLoading()
+                    binding.recyclerPopular.visibility = View.INVISIBLE
+                    binding.errorRecyclerPopular.visibility = View.VISIBLE
+                    binding.loaderRecyclerPopular.visibility = View.GONE
+
+                    binding.errorRecyclerPopular.setError(
+                        it.error ?: getString(R.string.something_went_wrong_message)
+                    )
+                }
+
+                YjahzResource.Loading -> {
+                    binding.recyclerPopular.visibility = View.INVISIBLE
+                    binding.errorRecyclerPopular.visibility = View.GONE
+                    binding.loaderRecyclerPopular.visibility = View.VISIBLE
+
+                    binding.loaderRecyclerPopular.startLoading()
+                }
+
+                is YjahzResource.Success -> {
+                    binding.loaderRecyclerPopular.visibility = View.INVISIBLE
+                    binding.errorRecyclerPopular.visibility = View.GONE
+
+                    binding.recyclerPopular.visibility = View.VISIBLE
+                    homePopularAdapter.submitItems(it.data?.data ?: listOf())
+                }
+            }
+        }
+    }
+
+    private fun getTrendingSellersObserver() {
+        mainViewModel.getTrendingSellersResponseLiveData.observe(viewLifecycleOwner) {
+            when (it) {
+                is YjahzResource.Failure -> {
+                    binding.loaderRecyclerTrending.stopLoading()
+                    binding.recyclerTrending.visibility = View.INVISIBLE
+                    binding.errorRecyclerTrending.visibility = View.VISIBLE
+                    binding.loaderRecyclerTrending.visibility = View.GONE
+
+                    binding.errorRecyclerTrending.setError(
+                        it.error ?: getString(R.string.something_went_wrong_message)
+                    )
+                }
+
+                YjahzResource.Loading -> {
+                    binding.recyclerTrending.visibility = View.INVISIBLE
+                    binding.errorRecyclerTrending.visibility = View.GONE
+                    binding.loaderRecyclerTrending.visibility = View.VISIBLE
+
+                    binding.loaderRecyclerTrending.startLoading()
+                }
+
+                is YjahzResource.Success -> {
+                    binding.loaderRecyclerTrending.visibility = View.INVISIBLE
+                    binding.errorRecyclerTrending.visibility = View.GONE
+
+                    binding.recyclerTrending.visibility = View.VISIBLE
+                    homeTrendingAdapter.submitItems(it.data?.data ?: listOf())
+                }
+            }
+        }
+    }
+
+    private fun getHomeBaseCategoriesObserver() {
+        mainViewModel.getHomeCategoriesResponseLiveData.observe(viewLifecycleOwner) {
+            when (it) {
+                is YjahzResource.Failure -> {
+                    binding.loaderRecyclerCategories.stopLoading()
+                    binding.recyclerCategories.visibility = View.INVISIBLE
+                    binding.errorRecyclerCategories.visibility = View.VISIBLE
+                    binding.loaderRecyclerCategories.visibility = View.GONE
+
+                    binding.errorRecyclerCategories.setError(
+                        it.error ?: getString(R.string.something_went_wrong_message)
+                    )
+                }
+
+                YjahzResource.Loading -> {
+                    binding.recyclerCategories.visibility = View.INVISIBLE
+                    binding.errorRecyclerCategories.visibility = View.GONE
+                    binding.loaderRecyclerCategories.visibility = View.VISIBLE
+
+                    binding.loaderRecyclerCategories.startLoading()
+                }
+
+                is YjahzResource.Success -> {
+                    binding.loaderRecyclerCategories.visibility = View.INVISIBLE
+                    binding.errorRecyclerCategories.visibility = View.GONE
+
+                    binding.recyclerCategories.visibility = View.VISIBLE
+                    homeCategoriesAdapter.submitItems(it.data?.data ?: listOf())
+                }
+            }
+        }
     }
 
     override fun showErrorView(networkError: ErrorViewType, resourceId: Int) {

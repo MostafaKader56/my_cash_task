@@ -106,7 +106,7 @@
             <Button
                 android:id="@+id/btn_sign_up"
                 android:layout_width="match_parent"
-                android:layout_height="@dimen/_50dp"
+                android:layout_height="wrap_content"
                 android:layout_marginHorizontal="@dimen/_40dp"
                 android:layout_marginTop="@dimen/_40dp"
                 android:backgroundTint="@color/teal_green"

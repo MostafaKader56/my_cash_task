@@ -1,8 +1,8 @@
-package com.bb4first.mycashtask.nerwork.api_helper_impl
+package com.bb4first.mycashtask.nerwork.api_helper_impl.auth
 
 import com.bb4first.mycashtask.nerwork.ApiService
 import com.bb4first.mycashtask.nerwork.RequestHeaders
-import com.bb4first.mycashtask.nerwork.api_helper.LoginApiHelper
+import com.bb4first.mycashtask.nerwork.api_helper.auth.LoginApiHelper
 import okhttp3.MultipartBody
 import javax.inject.Inject
 

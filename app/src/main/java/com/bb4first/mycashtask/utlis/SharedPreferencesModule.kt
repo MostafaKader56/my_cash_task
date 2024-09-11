@@ -49,7 +49,6 @@ object SharedPreferencesModule {
 
     fun getUserValue(): User? {
         val userJson = sharedPreferences.getString(PREF_USER_DATA, null)
-        "get: $userJson".logCat()
         return userJson?.let { User.fromJson(userJson) }
     }
 

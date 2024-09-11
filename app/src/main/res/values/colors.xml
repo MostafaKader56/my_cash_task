@@ -47,4 +47,6 @@
     <color name="teal_green">#00957B</color>
     <color name="desert_tan">#BA935C</color>
     <color name="light_yellow">#FFD279</color>
+<!--    <color name="darker_gray">@android:color/darker_gray</color>-->
+    <color name="darker_gray">@color/red_0</color>
 </resources>

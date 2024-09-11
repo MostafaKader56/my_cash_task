@@ -15,6 +15,7 @@
         android:layout_height="match_parent">
 
         <ImageView
+            android:id="@+id/popular_image"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:importantForAccessibility="no"
@@ -87,7 +88,7 @@
             android:layout_height="@dimen/_10dp"
             android:layout_marginTop="@dimen/_6dp"
             android:importantForAccessibility="no"
-            android:src="@drawable/ic_filled_star"
+            android:src="@drawable/ic_stroke_star"
             app:layout_constraintStart_toStartOf="@id/ic_location"
             app:layout_constraintTop_toBottomOf="@id/ic_location" />
 
@@ -98,7 +99,7 @@
             android:layout_marginStart="@dimen/_3dp"
             android:layout_marginTop="@dimen/_6dp"
             android:importantForAccessibility="no"
-            android:src="@drawable/ic_filled_star"
+            android:src="@drawable/ic_stroke_star"
             app:layout_constraintStart_toEndOf="@id/star_1"
             app:layout_constraintTop_toBottomOf="@id/ic_location" />
 
@@ -109,7 +110,7 @@
             android:layout_marginStart="@dimen/_3dp"
             android:layout_marginTop="@dimen/_6dp"
             android:importantForAccessibility="no"
-            android:src="@drawable/ic_filled_star"
+            android:src="@drawable/ic_stroke_star"
             app:layout_constraintStart_toEndOf="@id/star_2"
             app:layout_constraintTop_toBottomOf="@id/ic_location" />
 
@@ -120,7 +121,7 @@
             android:layout_marginStart="@dimen/_3dp"
             android:layout_marginTop="@dimen/_6dp"
             android:importantForAccessibility="no"
-            android:src="@drawable/ic_filled_star"
+            android:src="@drawable/ic_stroke_star"
             app:layout_constraintStart_toEndOf="@id/star_3"
             app:layout_constraintTop_toBottomOf="@id/ic_location" />
 
@@ -131,7 +132,7 @@
             android:layout_marginStart="@dimen/_3dp"
             android:layout_marginTop="@dimen/_6dp"
             android:importantForAccessibility="no"
-            android:src="@drawable/ic_filled_star"
+            android:src="@drawable/ic_stroke_star"
             app:layout_constraintStart_toEndOf="@id/star_4"
             app:layout_constraintTop_toBottomOf="@id/ic_location" />
 

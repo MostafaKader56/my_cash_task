@@ -162,9 +162,24 @@
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/recycler_categories"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="@dimen/_132dp"
                 android:layout_below="@+id/header_categories"
-                android:orientation="horizontal" />
+                android:orientation="horizontal"
+                android:visibility="invisible" />
+
+            <com.bb4first.mycashtask.ui.components.ProgressIndicatorPlaceholderComponent
+                android:id="@+id/loader_recycler_categories"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/_132dp"
+                android:layout_below="@+id/header_categories" />
+
+            <com.bb4first.mycashtask.ui.components.ErrorPlaceholderComponent
+                android:id="@+id/error_recycler_categories"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/_132dp"
+                android:layout_below="@+id/header_categories"
+                android:layout_marginHorizontal="@dimen/_15dp"
+                android:visibility="invisible" />
 
             <com.bb4first.mycashtask.ui.components.HomeSectionHeaderComponent
                 android:id="@+id/header_popular"
@@ -179,9 +194,23 @@
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/recycler_popular"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="@dimen/_188dp"
                 android:layout_below="@+id/header_popular"
                 android:orientation="horizontal" />
+
+            <com.bb4first.mycashtask.ui.components.ProgressIndicatorPlaceholderComponent
+                android:id="@+id/loader_recycler_popular"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/_188dp"
+                android:layout_below="@+id/header_popular" />
+
+            <com.bb4first.mycashtask.ui.components.ErrorPlaceholderComponent
+                android:id="@+id/error_recycler_popular"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/_188dp"
+                android:layout_below="@+id/header_popular"
+                android:layout_marginHorizontal="@dimen/_15dp"
+                android:visibility="invisible" />
 
             <com.bb4first.mycashtask.ui.components.HomeSectionHeaderComponent
                 android:id="@+id/header_trending"
@@ -196,10 +225,24 @@
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/recycler_trending"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="@dimen/_120dp"
                 android:layout_below="@+id/header_trending"
                 android:orientation="horizontal"
                 android:paddingBottom="@dimen/_15dp" />
+
+            <com.bb4first.mycashtask.ui.components.ProgressIndicatorPlaceholderComponent
+                android:id="@+id/loader_recycler_trending"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/_120dp"
+                android:layout_below="@+id/header_trending" />
+
+            <com.bb4first.mycashtask.ui.components.ErrorPlaceholderComponent
+                android:id="@+id/error_recycler_trending"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/_120dp"
+                android:layout_below="@+id/header_trending"
+                android:layout_marginHorizontal="@dimen/_15dp"
+                android:visibility="invisible" />
         </RelativeLayout>
 
     </ScrollView>

@@ -51,4 +51,8 @@
     <string name="categories">Categories.</string>
     <string name="popular_now">Popular now.</string>
     <string name="trending_now">Trending now.</string>
+    <string name="retry">Retry</string>
+    <string name="distance_km">%1$s Km</string>
+    <string name="unknown">Unknown</string>
+    <string name="unable_to_detect_location">Unable to detect location</string>
 </resources>

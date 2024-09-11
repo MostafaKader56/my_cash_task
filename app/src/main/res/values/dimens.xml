@@ -53,5 +53,10 @@
     <dimen name="_24sp">18sp</dimen>
     <dimen name="_18dp">13.5dp</dimen>
     <dimen name="_19dp">14.25dp</dimen>
-
+    <dimen name="_136dp">102dp</dimen>
+    <dimen name="_114dp">85.5dp</dimen>
+    <dimen name="_80dp">60dp</dimen>
+    <dimen name="_132dp">99dp</dimen>
+    <dimen name="_188dp">141dp</dimen>
+    <dimen name="_120dp">90dp</dimen>
 </resources>
