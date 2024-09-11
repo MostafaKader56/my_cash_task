@@ -8,6 +8,8 @@ class HomeActivity : BaseActivity<ActivityHomeBinding>() {
     override val bindingFactory: (LayoutInflater) -> ActivityHomeBinding
         get() = ActivityHomeBinding::inflate
 
+    override val enableEdgeToEdgeToThisActivity: Boolean = false
+
     override fun initialization() {
     }
 

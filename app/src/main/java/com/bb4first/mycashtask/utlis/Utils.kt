@@ -4,7 +4,6 @@ import android.annotation.SuppressLint
 import android.app.Activity
 import android.app.AlertDialog
 import android.content.Context
-import android.content.DialogInterface
 import android.content.Intent
 import android.content.pm.PackageInfo
 import android.content.pm.PackageManager
@@ -28,9 +27,7 @@ import android.widget.Toast
 import com.bb4first.mycashtask.MyCashTaskApplication
 import com.bb4first.mycashtask.R
 import com.bb4first.mycashtask.enums.AppLanguage
-import com.bb4first.mycashtask.utlis.Utils.logout
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
-import java.lang.StringBuilder
 import java.util.Date
 import java.util.Locale
 
@@ -258,7 +255,7 @@ object Utils {
         negativeAction: (() -> Unit)? = null,
         onDismissListener: (() -> Unit)? = null,
     ) {
-        val builder = AlertDialog.Builder(context)
+        val builder = AlertDialog.Builder(context, R.style.CustomAlertDialog)
 
         // Set title and message
         builder.apply {
@@ -284,7 +281,7 @@ object Utils {
 
         builder.setOnDismissListener { onDismissListener?.invoke() }
 
-        // Set dismissable behavior
+        // Set dismissible behavior
         builder.setCancelable(dismissible)
 
         // Show the dialog

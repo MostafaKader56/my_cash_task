@@ -48,7 +48,10 @@
     <dimen name="_200dp">150.0dp</dimen>
     <dimen name="_260dp">195.0dp</dimen>
     <dimen name="_285dp">213.75dp</dimen>
+    <dimen name="_110dp">82.5dp</dimen>
 
     <dimen name="_24sp">18sp</dimen>
+    <dimen name="_18dp">13.5dp</dimen>
+    <dimen name="_19dp">14.25dp</dimen>
 
 </resources>

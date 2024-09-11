@@ -2,16 +2,16 @@ package com.bb4first.mycashtask.model.auth
 
 import com.google.gson.Gson
 
-open class User(
-    val userId: Int,
-    var userName: String,
-    var userEmail: String,
-    var userImage: String,
-    var userType: Int,
-    var userPhone: String,
-    var userStatus: Int,
-    var userBalance: String?,
-    var userAddresses: List<Address>,
+class User(
+    val id: Int,
+    var name: String,
+    var email: String,
+    var image: String,
+    var type: Int,
+    var phone: String,
+    var status: Int,
+    var balance: String?,
+    var addresses: List<Address>,
 ) {
     fun toJson(): String {
         return Gson().toJson(this)

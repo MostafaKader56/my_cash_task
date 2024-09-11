@@ -1,9 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:backgroundTint="@color/white"
+    android:background="@color/white"
     tools:context=".ui.home.MainFragment">
 
     <androidx.appcompat.widget.Toolbar
@@ -11,7 +12,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="@color/white"
-        android:elevation="@dimen/_12dp">
+        android:elevation="@dimen/_16dp">
 
         <ImageView
             android:id="@+id/btn_back"
@@ -58,19 +59,149 @@
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_below="@+id/toolbar">
+        android:layout_below="@+id/toolbar"
+        android:background="@color/white">
 
-        <LinearLayout
+        <RelativeLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="vertical">
+            android:layout_height="wrap_content">
 
             <TextView
                 android:id="@+id/txt_hello_section"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Hello Ahmed" />
-        </LinearLayout>
+                android:layout_marginStart="@dimen/_24dp"
+                android:layout_marginTop="@dimen/_25dp"
+                android:textSize="26sp" />
+
+            <LinearLayout
+                android:id="@+id/address_section"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/txt_hello_section"
+                android:layout_marginStart="@dimen/_25dp"
+                android:layout_marginEnd="@dimen/_40dp"
+                android:gravity="center_vertical"
+                android:orientation="horizontal"
+                tools:ignore="UseCompoundDrawables">
+
+                <TextView
+                    android:id="@+id/txt_address"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:ellipsize="end"
+                    android:maxLines="1"
+                    android:textSize="20sp" />
+
+                <ImageView
+                    android:id="@+id/btn_address_forward"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="start"
+                    android:importantForAccessibility="no"
+                    android:padding="10dp"
+                    android:src="@drawable/ic_forward" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/search_section"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/address_section"
+                android:layout_marginHorizontal="@dimen/_15dp"
+                android:layout_marginTop="@dimen/_28dp"
+                android:gravity="center_vertical"
+                android:orientation="horizontal">
+
+                <EditText
+                    android:id="@+id/et_search"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:background="@drawable/bg_edittext"
+                    android:elevation="0dp"
+                    android:hint="@string/search_for_fav_food"
+                    android:importantForAutofill="no"
+                    android:inputType="text"
+                    android:padding="@dimen/_12dp"
+                    android:textColor="@color/black"
+                    android:textColorHint="@color/color_light_gray"
+                    android:textSize="16sp"
+                    tools:ignore="LabelFor" />
+
+                <ImageButton
+                    android:id="@+id/btn_search"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginHorizontal="@dimen/_5dp"
+                    android:background="@drawable/bg_img_btn"
+                    android:importantForAccessibility="no"
+                    android:src="@drawable/ic_search" />
+
+                <ImageButton
+                    android:id="@+id/btn_filter"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:background="@color/transparent"
+                    android:importantForAccessibility="no"
+                    android:padding="@dimen/_15dp"
+                    android:src="@drawable/ic_filter" />
+
+            </LinearLayout>
+
+            <com.bb4first.mycashtask.ui.components.HomeSectionHeaderComponent
+                android:id="@+id/header_categories"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/search_section"
+                android:layout_marginStart="@dimen/_30dp"
+                android:layout_marginTop="@dimen/_24dp"
+                android:layout_marginEnd="@dimen/_16dp"
+                app:header_text="@string/categories" />
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/recycler_categories"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/header_categories"
+                android:orientation="horizontal" />
+
+            <com.bb4first.mycashtask.ui.components.HomeSectionHeaderComponent
+                android:id="@+id/header_popular"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/recycler_categories"
+                android:layout_marginStart="@dimen/_30dp"
+                android:layout_marginTop="@dimen/_5dp"
+                android:layout_marginEnd="@dimen/_16dp"
+                app:header_text="@string/popular_now" />
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/recycler_popular"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/header_popular"
+                android:orientation="horizontal" />
+
+            <com.bb4first.mycashtask.ui.components.HomeSectionHeaderComponent
+                android:id="@+id/header_trending"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/recycler_popular"
+                android:layout_marginStart="@dimen/_30dp"
+                android:layout_marginTop="@dimen/_5dp"
+                android:layout_marginEnd="@dimen/_16dp"
+                app:header_text="@string/trending_now" />
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/recycler_trending"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/header_trending"
+                android:orientation="horizontal"
+                android:paddingBottom="@dimen/_15dp" />
+        </RelativeLayout>
+
     </ScrollView>
 
 </RelativeLayout>

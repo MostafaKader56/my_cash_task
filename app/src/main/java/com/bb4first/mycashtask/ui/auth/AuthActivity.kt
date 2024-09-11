@@ -8,9 +8,11 @@ import com.bb4first.mycashtask.databinding.ActivityAuthBinding
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
-class AuthActivity : BaseActivity<ActivityAuthBinding>() {
+class AuthActivity() : BaseActivity<ActivityAuthBinding>() {
     override val bindingFactory: (LayoutInflater) -> ActivityAuthBinding
         get() = ActivityAuthBinding::inflate
+
+    override val enableEdgeToEdgeToThisActivity: Boolean = true
 
     override fun initialization() {
 

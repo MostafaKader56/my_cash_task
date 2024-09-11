@@ -56,8 +56,11 @@ class LoginViewModel @Inject constructor(private val loginRepository: LoginRepos
         when (id) {
             R.id.login -> {
                 val loginResponse = response as LoginResponse
-                SharedPreferencesModule.setStringValue(SharedPreferencesModule.PREF_APP_TOKEN, loginResponse.token)
-                SharedPreferencesModule.setUserValue(loginResponse)
+                SharedPreferencesModule.setStringValue(
+                    SharedPreferencesModule.PREF_APP_TOKEN,
+                    loginResponse.token
+                )
+                SharedPreferencesModule.setUserValue(loginResponse.toUser())
 
                 loginUserResponse.value =
                     YjahzResource.Success(

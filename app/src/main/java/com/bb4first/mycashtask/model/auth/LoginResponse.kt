@@ -11,14 +11,16 @@ data class LoginResponse(
     val status: Int,
     val token: String,
     val type: Int
-) : User(
-    userAddresses = addresses,
-    userBalance = balance,
-    userEmail = email,
-    userId = id,
-    userImage = image,
-    userName = name,
-    userPhone = phone,
-    userStatus = status,
-    userType = type,
-)
+) {
+    fun toUser() = User(
+        id = id,
+        name = name,
+        email = email,
+        image = image,
+        type = type,
+        phone = phone,
+        status = status,
+        balance = balance,
+        addresses = addresses
+    )
+}
