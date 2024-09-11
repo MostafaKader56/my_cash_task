@@ -8,13 +8,13 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import androidx.viewbinding.ViewBinding
-import com.bb4first.mycashtask.R
 import com.bb4first.mycashtask.utlis.LanguageConfiguration
 
 abstract class BaseActivity<VB : ViewBinding> : AppCompatActivity() {
 
     abstract val bindingFactory: (LayoutInflater) -> VB
     lateinit var binding: VB
+    abstract val enableEdgeToEdgeToThisActivity: Boolean
 
     override fun attachBaseContext(newBase: Context) {
         super.attachBaseContext(
@@ -27,7 +27,8 @@ abstract class BaseActivity<VB : ViewBinding> : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        enableEdgeToEdge()
+        if (enableEdgeToEdgeToThisActivity)
+            enableEdgeToEdge()
 
         binding = bindingFactory(layoutInflater)
         setContentView(binding.root)

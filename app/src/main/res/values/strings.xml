@@ -37,4 +37,23 @@
     <string name="password_should_be_8_characters_at_least">Password should be 8 characters at least.</string>
     <string name="passwords_not_matches">Passwords not matches.</string>
     <string name="home">Home</string>
+    <string name="language">Language</string>
+    <string name="logout">Logout</string>
+    <string name="are_you_want_to_confirm_logout">Are you want to confirm logout?</string>
+    <string name="confirm">Confirm</string>
+    <string name="arabic">Arabic</string>
+    <string name="english">English</string>
+    <string name="choose_language">Choose Language</string>
+    <string name="main_fragment_hello">Hello %1$s</string>
+    <string name="no_address_found">There is no address</string>
+    <string name="search_for_fav_food">Search for fav food ...</string>
+    <string name="view_all">View all</string>
+    <string name="categories">Categories.</string>
+    <string name="popular_now">Popular now.</string>
+    <string name="trending_now">Trending now.</string>
+    <string name="retry">Retry</string>
+    <string name="distance_km">%1$s Km</string>
+    <string name="unknown">Unknown</string>
+    <string name="unable_to_detect_location">Unable to detect location</string>
+    <string name="permission_denied">permission denied</string>
 </resources>

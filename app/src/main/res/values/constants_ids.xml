@@ -2,5 +2,8 @@
 <resources>
     <item name="login" type="id" />
     <item name="sign_up" type="id" />
+    <item name="get_home_base_categories" type="id" />
+    <item name="get_trending_sellers" type="id" />
+    <item name="get_popular_sellers" type="id" />
 </resources>
 

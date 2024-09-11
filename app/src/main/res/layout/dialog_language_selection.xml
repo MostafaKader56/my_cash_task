@@ -6,35 +6,26 @@
     android:padding="16dp">
 
     <TextView
+        android:id="@+id/tv_choose_language"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Select Language"
-        android:textSize="18sp"
-        android:textStyle="bold"
-        android:layout_marginBottom="16dp"/>
-
-    <RadioGroup
-        android:id="@+id/radioGroupLanguage"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content">
-
-        <RadioButton
-            android:id="@+id/radioEnglish"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="English" />
-
-        <RadioButton
-            android:id="@+id/radioArabic"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Arabic" />
-    </RadioGroup>
+        android:layout_gravity="center"
+        android:text="@string/choose_language"
+        android:textAppearance="@style/TextAppearance.AppCompat.Large" />
 
     <Button
-        android:id="@+id/btnConfirm"
+        android:id="@+id/btn_english"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Confirm"
-        android:layout_marginTop="16dp" />
+        android:layout_marginTop="16dp"
+        android:backgroundTint="@color/accent_blue"
+        android:text="@string/english" />
+
+    <Button
+        android:id="@+id/btn_arabic"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:backgroundTint="@color/accent_blue"
+        android:text="@string/arabic" />
 </LinearLayout>

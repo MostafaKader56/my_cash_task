@@ -19,6 +19,7 @@ object RequestHeaders {
         val deviceId = MyCashTaskApplication.instance.getOurDeviceId()
         val deviceAndroidVersion = Utils.currentVersion()
         val token = SharedPreferencesModule.getStringValue(PREF_APP_TOKEN, "")
+        // This customization as the backend request
         map[Constants.ACCEPT] = "application/json"
         map[Constants.AUTHORIZATION] = "Bearer $token"
         map[Constants.ACCEPT_LANGUAGE] = appLanguage

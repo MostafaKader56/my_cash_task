@@ -24,19 +24,16 @@
             @color/splash_screen_icon_background
         </item>
 
-<!--        <item name="android:windowBackground">@color/white</item>-->
+        <item name="android:statusBarColor">@color/white</item>
+        <item name="android:windowLightStatusBar">true</item>
         <item name="android:fontFamily">@font/app_font_family</item>
         <item name="android:textColor">@color/black_text_color</item>
+
+        <item name="android:popupMenuStyle">@style/CustomPopupMenu</item>
+        <item name="popupMenuStyle">@style/CustomPopupMenu</item>
     </style>
 
     <style name="Theme.MyCashTask" parent="Base.Theme.MyCashTask" />
-
-    <style name="Theme.MyCashTask.Home" parent="Base.Theme.MyCashTask">
-        <item name="android:statusBarColor">@color/white</item>
-        <item name="android:windowLightStatusBar">true</item>
-        <item name="android:windowDrawsSystemBarBackgrounds">true</item>
-    </style>
-
 
     <style name="Theme.MyCashTask.NoStatusBar" parent="Base.Theme.MyCashTask">
         <item name="android:windowFullscreen">true</item>
@@ -48,4 +45,22 @@
         <item name="android:windowLightStatusBar">false</item>
         <item name="android:windowBackground">@color/transparent</item>
     </style>
+
+    <style name="CustomPopupMenu" parent="Widget.AppCompat.PopupMenu.Overflow">
+        <item name="android:popupBackground">@color/white</item>
+        <item name="android:textColor">@color/black</item>
+    </style>
+
+    <style name="CustomAlertDialog" parent="ThemeOverlay.MaterialComponents.Dialog.Alert">
+        <!-- Background color -->
+        <item name="android:background">@color/white</item>
+
+        <!-- Title color -->
+        <item name="android:textColorPrimary">@color/black</item>
+
+        <!-- Message color -->
+        <item name="android:textColorSecondary">@color/color_black_4</item>
+    </style>
+
+
 </resources>

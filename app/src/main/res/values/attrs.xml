@@ -16,4 +16,9 @@
         </attr>
         <attr name="autofillHints" format="string|reference" />
     </declare-styleable>
+    <declare-styleable name="HomeSectionHeaderComponent">
+        <attr name="header_text" format="string" />
+    </declare-styleable>
+    <declare-styleable name="ProgressIndicatorPlaceholderComponent"></declare-styleable>
+    <declare-styleable name="ErrorPlaceholderComponent"></declare-styleable>
 </resources>

@@ -4,6 +4,7 @@ import android.content.Context.MODE_PRIVATE
 import android.content.SharedPreferences
 import com.bb4first.mycashtask.MyCashTaskApplication
 import com.bb4first.mycashtask.model.auth.User
+import com.bb4first.mycashtask.utlis.Utils.logCat
 
 object SharedPreferencesModule {
     private const val SHARED_PREFERENCES_NAME = "com.bb4first.mycashtask_SHARED_PREFERENCES_NAME"
@@ -39,6 +40,7 @@ object SharedPreferencesModule {
 
 
     fun setUserValue(value: User) {
+        value.toJson().logCat()
         sharedPreferences.edit()?.apply {
             putString(PREF_USER_DATA, value.toJson())
             apply()

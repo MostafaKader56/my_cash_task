@@ -67,7 +67,7 @@ class SignUpViewModel @Inject constructor(private val signUpRepository: SignUpRe
                     SharedPreferencesModule.PREF_APP_TOKEN,
                     signUpResponse.token
                 )
-                SharedPreferencesModule.setUserValue(signUpResponse)
+                SharedPreferencesModule.setUserValue(signUpResponse.toUser())
                 registerUserResponse.value =
                     YjahzResource.Success(
                         data = signUpResponse,

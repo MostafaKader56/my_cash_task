@@ -18,4 +18,7 @@ object Constants {
     // END POINTS
     const val SIGN_UP = "client-register"
     const val LOGIN = "login"
+    const val GET_HOME_CATEGORIES = "home-base-categories"
+    const val GET_POPULAR = "popular-sellers"
+    const val GET_TRENDING = "trending-sellers"
 }
